@@ -6,19 +6,20 @@ namespace WebApiSistemaGestionVentas.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class ClientesController : Controller
+    public class VentaController : Controller
     {
-        private ClientesRepo repository = new ClientesRepo();
+        private VentaRepo repository = new VentaRepo();
 
         [HttpGet]
-        public ActionResult<List<Clientes>> Get()
+
+        public ActionResult <List<Venta>> Get() 
         {
             try
             {
-                List<Clientes> lista = repository.listarClientes();
+                List<Venta> lista = repository.listarVenta();
                 return Ok(lista);
             }
-            catch (Exception ex)
+            catch(Exception ex) 
             {
                 return Problem(ex.Message);
             }
@@ -29,6 +30,5 @@ namespace WebApiSistemaGestionVentas.Controllers
         {
             return Ok();
         }
-
     }
 }

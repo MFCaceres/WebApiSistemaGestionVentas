@@ -43,12 +43,12 @@ namespace WebApiSistemaGestionVentas.Repo
                             while (reader.Read())
                             {
                                 Clientes clientes = new Clientes();
-                                clientes.Id = int.Parse(reader["Id"].ToString());
+                                clientes.Id = Convert.ToInt32(reader["Id"].ToString());
                                 clientes.Nombre = reader["Nombre"].ToString();
-                                clientes.Telefono = int.Parse(reader["Telefono"].ToString());
-                                clientes.Edad = int.Parse(reader["Edad"].ToString());
-                                clientes.Documento_identificacion = int.Parse(reader["DocumentoIdentificacion"].ToString());
-                                clientes.Id_Tipo_Documento = int.Parse(reader["IdTipoDocumento"].ToString());
+                                clientes.Telefono = reader["Telefono"].ToString();
+                                clientes.Edad = reader["Edad"].ToString();
+                                clientes.Documento_identificacion = reader["Documento_Identificacion"].ToString();
+                                clientes.Id_Tipo_Documento = reader["Id_Tipo_Documento"].ToString();
                                 lista.Add(clientes);
                             }
                         }

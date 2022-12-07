@@ -9,14 +9,14 @@ namespace WebApiSistemaGestionVentas.Models
 {
     public class ProductoVendido
     {
-        public int Id { get; set; }
-        [Required]
-        public int IdProducto { get; set; }
+        public long Id { get; set; }
+              
         public int Stock { get; set; }
-        [Required]
-        public int IdVenta { get; set; }
 
-        public ProductoVendido(int id, int idProducto, int stock, int idVenta)
+        public int IdProducto { get; set; }
+        public long IdVenta { get; set; }
+
+        public ProductoVendido(long id, int idProducto, int stock, long idVenta)
         {
             Id = id;
             IdProducto = idProducto;

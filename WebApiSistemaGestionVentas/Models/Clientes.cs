@@ -11,13 +11,13 @@ namespace WebApiSistemaGestionVentas.Models
     public class Clientes
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int Telefono { get; set; }
-        public int Edad { get; set; }
-        public int Documento_identificacion { get; set; }
-        public int Id_Tipo_Documento { get; set; }
+        public string? Nombre { get; set; }
+        public string? Telefono { get; set; }
+        public string? Edad { get; set; }
+        public string? Documento_identificacion { get; set; }
+        public string? Id_Tipo_Documento { get; set; }
 
-        public Clientes(int id, string nombre, int telefono, int edad, int documento_identificacion, int id_tipo_documento)
+        public Clientes(int id, string? nombre, string? telefono, string? edad, string? documento_identificacion, string? id_tipo_documento)
         {
             Id = id;
             Nombre = nombre;
@@ -31,10 +31,10 @@ namespace WebApiSistemaGestionVentas.Models
         {
             Id = 0;
             Nombre = "";
-            Telefono = 0;
-            Edad = 0;
-            Documento_identificacion = 0;
-            Id_Tipo_Documento = 0;
+            Telefono = "";
+            Edad = "";
+            Documento_identificacion = "";
+            Id_Tipo_Documento = "";
         }
     }
 }

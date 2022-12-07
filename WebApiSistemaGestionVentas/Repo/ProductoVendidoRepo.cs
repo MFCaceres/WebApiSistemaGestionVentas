@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
+using WebApiSistemaGestionVentas.Models;
 
 namespace WebApiSistemaGestionVentas.Repo
 {
-    public class ProductoVendido
+    public class ProductoVendidoRepo
     {
         private SqlConnection? conexion;
         private string cadenaConexion = "Server=sql.bsite.net\\MSSQL2016;" +
@@ -42,10 +42,10 @@ namespace WebApiSistemaGestionVentas.Repo
                             while (reader.Read())
                             {
                                 ProductoVendido productovendido = new ProductoVendido();
-                                ProductoVendido.Id = int.Parse(reader["Id"].ToString());
-                                ProductoVendido.Stock = int.Parse(reader["Stock"].ToString());
-                                ProductoVendido.IdProducto = int.Parse(reader["IdProducto"].ToString());
-                                ProductoVendido.IdVenta = int.Parse(reader["IdVenta"].ToString());
+                                productovendido.Id = int.Parse(reader["Id"].ToString());
+                                productovendido.Stock = int.Parse(reader["Stock"].ToString());
+                                productovendido.IdProducto = int.Parse(reader["IdProducto"].ToString());
+                                productovendido.IdVenta = int.Parse(reader["IdVenta"].ToString());
                                 lista.Add(productovendido);
                             }
                         }

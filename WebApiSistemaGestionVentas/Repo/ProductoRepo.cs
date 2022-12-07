@@ -3,7 +3,7 @@ using WebApiSistemaGestionVentas.Models;
 
 namespace WebApiSistemaGestionVentas.Repo
 {
-    public class ProductoVendidoRepo
+    public class ProductoRepo
     {
         private SqlConnection? conexion;
         private string cadenaConexion = "Server=sql.bsite.net\\MSSQL2016;" +
@@ -11,7 +11,7 @@ namespace WebApiSistemaGestionVentas.Repo
             "User Id=ajomuch92_coderhouse_csharp_40930;" +
             "Password=ElQuequit0Sexy2022;";
 
-        public ProductoVendidoRepo()
+        public ProductoRepo()
         {
             try
             {

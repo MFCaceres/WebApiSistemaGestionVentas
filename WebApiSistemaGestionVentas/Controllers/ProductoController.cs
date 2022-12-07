@@ -4,31 +4,32 @@ using WebApiSistemaGestionVentas.Repo;
 
 namespace WebApiSistemaGestionVentas.Controllers
 {
-        [ApiController]
-        [Route("api/v1/[controller]")]
-        public class ProductoController : Controller
+    [ApiController]
+    [Route("api/v1/[controller]")]
+
+    public class ProductoController : Controller
+    {
+        private ProductoRepo repository = new ProductoRepo();
+
+        [HttpGet]
+        public ActionResult<List<Producto>> Get()
         {
-            private ProductoVendidoRepo repository = new ProductoVendidoRepo();
-
-            [HttpGet]
-            public ActionResult<List<Producto>> Get()
+            try
             {
-                try
-                {
-                    List<Producto> lista = repository.listarProductos();
-                    return Ok(lista);
-                }
-                catch (Exception ex)
-                {
-                    return Problem(ex.Message);
-                }
+                List<Producto> lista = repository.listarProductos();
+                return Ok(lista);
             }
-
-            [HttpPost]
-            public IActionResult Post()
+            catch (Exception ex)
             {
-                return Ok();
+                return Problem(ex.Message);
             }
-
         }
+
+        [HttpPost]
+        public IActionResult Post()
+        {
+            return Ok();
+        }
+
+    }
 }
