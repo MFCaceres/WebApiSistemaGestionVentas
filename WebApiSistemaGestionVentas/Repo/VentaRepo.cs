@@ -1,6 +1,7 @@
 ﻿using WebApiSistemaGestionVentas.Models;
 using System.Data.SqlClient;
-
+using System.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiSistemaGestionVentas.Repo
 {
@@ -59,6 +60,44 @@ namespace WebApiSistemaGestionVentas.Repo
                 throw;
             }
             return lista;
+        }
+
+        public Venta CargarVenta(Venta venta, ProductoVendido productoVendido)
+        {
+            if (conexion == null)
+            {
+                throw new Exception("Conexión no establecida");
+            }
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Venta(Id, Comentarios, IdUsuario) " +
+                    "VALUES(@Id, @comentarios, @idUsuario)", conexion))
+                {
+                    conexion.Open();
+                    cmd.Parameters.Add(new SqlParameter("Id", SqlDbType.BigInt) { Value = venta.Id });
+                    cmd.Parameters.Add(new SqlParameter("comentarios", SqlDbType.VarChar) { Value = venta.Comentarios });
+                    cmd.Parameters.Add(new SqlParameter("idUsuario", SqlDbType.Int) { Value = venta.IdUsuario });
+                    cmd.ExecuteNonQuery();
+
+                    var actualizarStock = new SqlCommand("UPDATE ProductoVendido Set Stock=Stock-@venta " +
+                        "WHERE Id=@Id", conexion);
+                    actualizarStock.Parameters.Add(new SqlParameter("Id", SqlDbType.BigInt) { Value = productoVendido.Id });
+                    actualizarStock.Parameters.Add(new SqlParameter("@Stock", SqlDbType.Int) { Value = productoVendido.Stock});
+                    actualizarStock.Parameters.Add(new SqlParameter("@IdProducto", SqlDbType.Int) { Value = productoVendido.IdProducto});
+                    actualizarStock.Parameters.Add(new SqlParameter("IdVenta", SqlDbType.BigInt) { Value = productoVendido.IdVenta});
+                    actualizarStock.ExecuteNonQuery();
+
+                    return venta;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

@@ -11,7 +11,6 @@ namespace WebApiSistemaGestionVentas.Controllers
         private VentaRepo repository = new VentaRepo();
 
         [HttpGet]
-
         public ActionResult <List<Venta>> Get() 
         {
             try
@@ -26,9 +25,19 @@ namespace WebApiSistemaGestionVentas.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public IActionResult Post([FromBody] Venta venta, ProductoVendido productoVendido)
         {
-            return Ok();
+            try
+            {
+                Venta CargarVenta = repository.CargarVenta(venta, productoVendido);
+                return StatusCode(StatusCodes.Status201Created, CargarVenta);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+
         }
+
     }
 }
