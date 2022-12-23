@@ -7,6 +7,65 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\ClientesController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.GlobalUsings.g.cs" />
+    <Compile Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.MvcApplicationPartsAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\appsettings.Development.json" />
+    <Content Include="bin\Debug\net6.0\appsettings.json" />
+    <Content Include="bin\Debug\net6.0\WebApiSistemaGestionVentas.deps.json" />
+    <Content Include="bin\Debug\net6.0\WebApiSistemaGestionVentas.runtimeconfig.json" />
+    <Content Include="obj\Debug\net6.0\staticwebassets.build.json" />
+    <Content Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\WebApiSistemaGestionVentas.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\Microsoft.OpenApi.dll" />
+    <None Include="bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll" />
+    <None Include="bin\Debug\net6.0\runtimes\win-x64\native\sni.dll" />
+    <None Include="bin\Debug\net6.0\runtimes\win-x86\native\sni.dll" />
+    <None Include="bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll" />
+    <None Include="bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll" />
+    <None Include="bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll" />
+    <None Include="bin\Debug\net6.0\System.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net6.0\WebApiSistemaGestionVentas.dll" />
+    <None Include="bin\Debug\net6.0\WebApiSistemaGestionVentas.exe" />
+    <None Include="bin\Debug\net6.0\WebApiSistemaGestionVentas.pdb" />
+    <None Include="obj\Debug\net6.0\apphost.exe" />
+    <None Include="obj\Debug\net6.0\refint\WebApiSistemaGestionVentas.dll" />
+    <None Include="obj\Debug\net6.0\ref\WebApiSistemaGestionVentas.dll" />
+    <None Include="obj\Debug\net6.0\staticwebassets\msbuild.build.WebApiSistemaGestionVentas.props" />
+    <None Include="obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebApiSistemaGestionVentas.props" />
+    <None Include="obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebApiSistemaGestionVentas.props" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.assets.cache" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.csproj.BuildWithSkipAnalyzers" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.csproj.CopyComplete" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.dll" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.genruntimeconfig.cache" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.MvcApplicationPartsAssemblyInfo.cache" />
+    <None Include="obj\Debug\net6.0\WebApiSistemaGestionVentas.pdb" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\staticwebassets.pack.sentinel" />
+    <None Include="obj\WebApiSistemaGestionVentas.csproj.nuget.g.props" />
+    <None Include="obj\WebApiSistemaGestionVentas.csproj.nuget.g.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>

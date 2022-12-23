@@ -54,6 +54,26 @@ namespace WebApiSistemaGestionVentas.Controllers
             }
         }
 
+        [HttpDelete]
+        public ActionResult Delete([FromBody] int id)
+        {
+            try
+            {
+                bool deleteUsuario = repository.eliminarUsuario(id);
+                if (deleteUsuario)
+                {
+                    return Ok();
+                }
+                else 
+                {
+                    return NotFound();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
 

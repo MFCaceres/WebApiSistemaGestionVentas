@@ -15,8 +15,8 @@ namespace WebApiSistemaGestionVentas.Controllers
         {
             try
             {
-                List<ProductoVendido> lista = repository.listarProductoVendido();
-                return Ok(lista);
+                List<ProductoVendido> productosVendidos1 = repository.TraerProductosVendidos();
+                return Ok(productosVendidos1);
             }
             catch (Exception ex)
             {

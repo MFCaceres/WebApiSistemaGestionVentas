@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 using WebApiSistemaGestionVentas.Models;
 
 namespace WebApiSistemaGestionVentas.Repo
@@ -23,42 +24,48 @@ namespace WebApiSistemaGestionVentas.Repo
             }
         }
 
-        public List<ProductoVendido> listarProductoVendido()
+        public List<ProductoVendido> TraerProductosVendidos()
         {
-            List<ProductoVendido> lista = new List<ProductoVendido>();
+            List<ProductoVendido> productosVendidos1 = new List<ProductoVendido>();
             if (conexion == null)
             {
                 throw new Exception("Conexión no establecida");
             }
             try
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM ProductoVendido", conexion))
+            string query = "SELECT * FROM ProductoVendido inner join Producto ON ProductoVendido.IdProducto = Producto.Id";
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+            {
+                conexion.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    conexion.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    if (reader.HasRows)
                     {
-                        if (reader.HasRows)
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            ProductoVendido productoVendido = new ProductoVendido()
                             {
-                                ProductoVendido productovendido = new ProductoVendido();
-                                productovendido.Id = int.Parse(reader["Id"].ToString());
-                                productovendido.Stock = int.Parse(reader["Stock"].ToString());
-                                productovendido.IdProducto = int.Parse(reader["IdProducto"].ToString());
-                                productovendido.IdVenta = int.Parse(reader["IdVenta"].ToString());
-                                lista.Add(productovendido);
-                            }
+                                Id = long.Parse(reader["Id"].ToString()),
+                                IdProducto = int.Parse(reader["IdProducto"].ToString()),
+                                Stock = int.Parse(reader["Stock"].ToString()),
+                                producto = new Producto()
+                                {
+                                    Descripcion = reader["Descripciones"].ToString(),
+                                    PrecioVenta = double.Parse(reader["PrecioVenta"].ToString())
+                                }
+                            };
+                            productosVendidos1.Add(productoVendido);
                         }
                     }
                 }
-                conexion.Close();
+                    conexion.Close();
+                }
             }
             catch
             {
                 throw;
             }
-            return lista;
+            return productosVendidos1;
         }
-
     }
 }

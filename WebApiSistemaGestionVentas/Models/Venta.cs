@@ -13,6 +13,7 @@ namespace WebApiSistemaGestionVentas.Models
         public long Id { get; set; } 
         public string? Comentarios { get; set; }
         public int IdUsuario { get; set; }  
+        public List<ProductoVendido>? ProductosVendidos { get; set; }
 
         public Venta(long id, string? comentarios, int idUsuario) 
         { 
@@ -25,7 +26,8 @@ namespace WebApiSistemaGestionVentas.Models
         { 
             Id= 0;
             Comentarios = "";
-            IdUsuario= 0;   
+            IdUsuario= 0;  
+            ProductosVendidos= new List<ProductoVendido>();
         }
     }
 }

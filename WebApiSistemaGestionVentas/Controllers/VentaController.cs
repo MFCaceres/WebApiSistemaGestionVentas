@@ -8,36 +8,75 @@ namespace WebApiSistemaGestionVentas.Controllers
     [Route("api/v1/[controller]")]
     public class VentaController : Controller
     {
-        private VentaRepo repository = new VentaRepo();
+        VentaRepo repository = new VentaRepo();
 
         [HttpGet]
-        public ActionResult <List<Venta>> Get() 
+        public ActionResult<List<Venta>> Get()
         {
             try
             {
                 List<Venta> lista = repository.listarVenta();
                 return Ok(lista);
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 return Problem(ex.Message);
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Venta venta, ProductoVendido productoVendido)
+
+        public ActionResult Post([FromBody] Venta venta)
         {
             try
             {
-                Venta CargarVenta = repository.CargarVenta(venta, productoVendido);
-                return StatusCode(StatusCodes.Status201Created, CargarVenta);
+                repository.CargarVenta(venta);
+                return Ok();
             }
             catch (Exception ex)
             {
                 return Problem(ex.Message);
             }
-
         }
 
+        [HttpGet("{id}")]
+        public ActionResult Get(long id)
+        {
+            try
+            {
+                return Ok(repository.ObtenerVenta(id));
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpDelete]
+
+        public ActionResult Delete([FromBody] long id)
+        {
+            try
+            {
+                bool deleteVenta = repository.EliminarVenta(id);
+                if (deleteVenta)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
+
+
+
+
+

@@ -166,6 +166,30 @@ namespace WebApiSistemaGestionVentas.Repo
             }
         }
 
+        public bool eliminarUsuario(int id)
+        {
+            if (conexion == null)
+            {
+                throw new Exception("Conexión no establecida");
+            }
+            try
+            {
+                int filasAfectadas = 0;
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM usuario WHERE id = @id", conexion))
+                {
+                    conexion.Open();
+                    cmd.Parameters.Add(new SqlParameter("id", SqlDbType.Int) { Value = id });
+                    filasAfectadas = cmd.ExecuteNonQuery();
+                }
+                conexion.Close();
+                return filasAfectadas > 0;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         private Usuario obtenerUsuarioDesdeReader(SqlDataReader reader)
         {
             Usuario usuario = new Usuario();

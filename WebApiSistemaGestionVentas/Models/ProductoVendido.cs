@@ -15,6 +15,9 @@ namespace WebApiSistemaGestionVentas.Models
 
         public int IdProducto { get; set; }
         public long IdVenta { get; set; }
+        public Producto? producto { get; set; }
+        public List<Producto>? ProductosVendidos1 { get; set; }
+
 
         public ProductoVendido(long id, int idProducto, int stock, long idVenta)
         {
@@ -29,8 +32,8 @@ namespace WebApiSistemaGestionVentas.Models
             Id = 0;
             IdProducto = 0;
             Stock = 0;  
-            IdVenta= 0;           
-        
+            IdVenta= 0;
+            ProductosVendidos1 = new List<Producto>();
         }
     }
 }
